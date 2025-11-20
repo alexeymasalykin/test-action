@@ -53,6 +53,29 @@ uvicorn main:app --reload
 uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
+## Запуск с Docker
+
+### Сборка образа
+
+```bash
+docker build -t time-server-api .
+```
+
+### Запуск контейнера
+
+```bash
+docker run -d -p 8000:8000 --name time-server time-server-api
+```
+
+Сервер будет доступен по адресу: `http://localhost:8000`
+
+### Остановка контейнера
+
+```bash
+docker stop time-server
+docker rm time-server
+```
+
 ## API Эндпоинты
 
 ### GET `/`
@@ -110,6 +133,8 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 action-fastapi/
 ├── main.py              # Основное приложение FastAPI
 ├── requirements.txt     # Зависимости проекта
+├── Dockerfile           # Docker конфигурация для сборки образа
+├── .dockerignore        # Игнорируемые файлы для Docker
 ├── .env.example         # Пример файла переменных окружения
 ├── .gitignore          # Игнорируемые файлы для Git
 └── README.md           # Документация проекта
