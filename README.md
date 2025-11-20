@@ -86,7 +86,9 @@ docker rm time-server
 {
   "message": "Time Server API",
   "endpoints": {
-    "/time": "GET - получить текущее время сервера"
+    "/time": "GET - получить текущее время сервера",
+    "/date": "GET - получить текущую дату сервера",
+    "/date/formatted": "GET - получить дату в разных форматах"
   }
 }
 ```
@@ -99,6 +101,40 @@ docker rm time-server
 {
   "current_time": "2024-01-15 14:30:45",
   "timestamp": 1705327845.123456,
+  "timezone": "UTC"
+}
+```
+
+### GET `/date`
+Возвращает текущую дату сервера с дополнительной информацией.
+
+**Ответ:**
+```json
+{
+  "current_date": "15.01.2024",
+  "date_iso": "2024-01-15",
+  "day_of_week": "Понедельник",
+  "day_of_year": 15,
+  "week_number": 3,
+  "timezone": "UTC"
+}
+```
+
+### GET `/date/formatted`
+Возвращает текущую дату в различных форматах.
+
+**Ответ:**
+```json
+{
+  "iso_format": "2024-01-15",
+  "russian_format": "15.01.2024",
+  "us_format": "01/15/2024",
+  "full_format": "15 January 2024",
+  "short_format": "15.01.24",
+  "timestamp": 1705327845.123456,
+  "year": 2024,
+  "month": 1,
+  "day": 15,
   "timezone": "UTC"
 }
 ```
